@@ -36,6 +36,18 @@ Plesk or C-Panel:
 node /var/www/vhosts/n8n/bin/n8n
 ```
 
+# Ensure your SuiteCRM v8 has keys
+
+Keys must be placed in /suitecrm-root/SuiteCRM-8.2.4/public/legacy/Api/V8/OAuth2/
+
+```bash
+cd /suitecrm-root/SuiteCRM-8.2.4/public/legacy/Api/V8/OAuth2/
+openssl genrsa -out private.key 2048
+openssl rsa -in private.key -pubout -out public.key
+sudo chmod 600 private.key public.key
+sudo chown www-data:www-data p*.key
+```
+
 # Latest functionality
 
 Suite Crm n8n node includes REST API endpoints via "data" implementation.
